@@ -1,0 +1,243 @@
+\documentclass[12pt,a4paper]{article}
+
+% --- Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}                % Palatino font (common in finance journals)
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}                % Professional tables
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{natbib}                  % Author-year citations
+\usepackage{titlesec}
+\usepackage{abstract}
+\usepackage{appendix}
+\usepackage{threeparttable}          % Table notes
+\usepackage{dcolumn}                 % Decimal-aligned columns
+\usepackage{pdflscape}               % Landscape pages for wide tables
+\usepackage{enumitem}
+
+% --- Formatting ---
+\doublespacing
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
+\bibliographystyle{aer}              % American Economic Review style (change as needed)
+\newcolumntype{d}[1]{D{.}{.}{#1}}   % Decimal alignment in tables
+
+% --- Title Page ---Dalmizrak Emre
+\title{\textbf{Your Paper Title: \\ A Study of Financial Markets}}
+\author{
+  Andrea Landini\thanks{M.Sc. Finance, Universität Liechtenstein . Email: \href{mailto:andrea.landini@uni.li}{andrea.landini@uni.li}.} 
+  \and 
+  Simone Fruner\thanks{M.Sc. Finance, Universität Liechtenstein. Email: \href{mailto:simone.fruner@uni.li}{simone.fruner@uni.li}.} 
+  \and 
+  Emre Dalmizrak\thanks{M.Sc. Finance, Universität Liechtenstein. Email: \href{mailto:emre.dalmizrak@uni.li}{emre.dalmizrak@uni.li}.} 
+  \and 
+  Jan Mokrosinski\thanks{M.Sc. Finance, Universität Liechtenstein. Email: \href{mailto:jan.mokrosinski@uni.li}{jan.mokrosinski@uni.li}.} 
+}
+\date{March 2026}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+% --- Abstract ---
+\begin{abstract}
+\noindent
+Write your abstract here. Summarize the research question, methodology, key findings, and contribution. Most finance journals require abstracts of 100--150 words.
+
+\bigskip
+\noindent
+\textbf{Keywords:} keyword one, keyword two, keyword three
+
+\bigskip
+\noindent
+\textbf{JEL Classification:} G12, G14, G32
+\end{abstract}
+
+\newpage
+\setcounter{page}{1}
+
+% ============================================================
+\section{Introduction}
+\label{sec:introduction}
+% ============================================================
+
+Introduce the research question and its importance. Discuss the gap in the literature and state the paper's contribution. Provide a brief overview of methodology and key findings.
+
+The remainder of this paper is organized as follows. Section~\ref{sec:literature} reviews the related literature. Section~\ref{sec:data} describes the data and sample construction. Section~\ref{sec:methodology} outlines the empirical methodology. Section~\ref{sec:results} presents the main results. Section~\ref{sec:robustness} provides robustness checks. Section~\ref{sec:conclusion} concludes.
+
+% ============================================================
+\section{Literature Review}
+\label{sec:literature}
+% ============================================================
+
+Review the relevant literature and position your contribution. Use citations like \citet{author2020} for textual citations or \citep{author2020} for parenthetical citations.
+
+% ============================================================
+\section{Data and Sample Construction}
+\label{sec:data}
+% ============================================================
+
+\subsection{Data Sources}
+
+Describe the data sources (e.g., CRSP, Compustat, Bloomberg, WRDS).
+
+\subsection{Sample Selection}
+
+Explain filtering criteria and the final sample.
+
+\subsection{Summary Statistics}
+
+% --- Example Summary Statistics Table ---
+\begin{table}[H]
+\centering
+\caption{Summary Statistics}
+\label{tab:summary}
+\begin{threeparttable}
+\begin{tabular}{lccccc}
+\toprule
+Variable & N & Mean & Std.\ Dev. & Min & Max \\
+\midrule
+Return (\%)       & 10{,}000 & 0.85  & 4.32  & $-$28.50 & 35.20 \\
+Market Cap (\$B)  & 10{,}000 & 12.40 & 25.60 & 0.05     & 450.00 \\
+Book-to-Market    & 10{,}000 & 0.62  & 0.45  & 0.01     & 3.80 \\
+Leverage          & 10{,}000 & 0.35  & 0.22  & 0.00     & 0.95 \\
+ROA (\%)          & 10{,}000 & 5.20  & 8.10  & $-$40.00 & 30.00 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item \textit{Notes:} This table reports summary statistics for the sample period 2000--2024. Return is the monthly stock return. Market Cap is market capitalization in billions of USD. Book-to-Market is the ratio of book equity to market equity. Leverage is total debt divided by total assets. ROA is return on assets.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+% ============================================================
+\section{Methodology}
+\label{sec:methodology}
+% ============================================================
+
+\subsection{Empirical Model}
+
+Present your main regression specification:
+
+\begin{equation}
+\label{eq:main}
+R_{i,t} = \alpha + \beta_1 X_{i,t-1} + \gamma Z_{i,t-1} + \delta_i + \mu_t + \varepsilon_{i,t}
+\end{equation}
+
+\noindent where $R_{i,t}$ is the return of firm $i$ at time $t$, $X_{i,t-1}$ is the variable of interest, $Z_{i,t-1}$ is a vector of controls, $\delta_i$ represents firm fixed effects, and $\mu_t$ represents time fixed effects. Standard errors are clustered at the firm level.
+
+\subsection{Identification Strategy}
+
+Discuss endogeneity concerns and your identification approach (e.g., instrumental variables, difference-in-differences, regression discontinuity).
+
+% ============================================================
+\section{Results}
+\label{sec:results}
+% ============================================================
+
+\subsection{Main Results}
+
+% --- Example Regression Table ---
+\begin{table}[H]
+\centering
+\caption{Main Regression Results}
+\label{tab:regression}
+\begin{threeparttable}
+\begin{tabular}{lcccc}
+\toprule
+ & (1) & (2) & (3) & (4) \\
+ & OLS & OLS & FE & IV \\
+\midrule
+$X_{t-1}$ & 0.045$^{***}$ & 0.038$^{***}$ & 0.032$^{**}$ & 0.051$^{**}$ \\
+           & (0.012)       & (0.011)       & (0.013)      & (0.021) \\[6pt]
+Size       &               & $-$0.002      & $-$0.005     & $-$0.003 \\
+           &               & (0.003)       & (0.004)      & (0.003) \\[6pt]
+B/M        &               & 0.015$^{*}$   & 0.012        & 0.014$^{*}$ \\
+           &               & (0.008)       & (0.009)      & (0.008) \\[6pt]
+Leverage   &               & $-$0.021$^{**}$ & $-$0.018$^{*}$ & $-$0.023$^{**}$ \\
+           &               & (0.010)         & (0.011)        & (0.010) \\[6pt]
+\midrule
+Firm FE        & No  & No  & Yes & Yes \\
+Time FE        & No  & Yes & Yes & Yes \\
+Controls       & No  & Yes & Yes & Yes \\
+Observations   & 10{,}000 & 10{,}000 & 10{,}000 & 9{,}500 \\
+$R^2$          & 0.02 & 0.08 & 0.15 & --- \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item \textit{Notes:} This table reports regression estimates of Equation~\eqref{eq:main}. The dependent variable is the monthly stock return. Standard errors clustered at the firm level are in parentheses. $^{***}$, $^{**}$, and $^{*}$ denote significance at the 1\%, 5\%, and 10\% levels, respectively.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\subsection{Economic Magnitude}
+
+Discuss the economic significance of the estimates.
+
+% ============================================================
+\section{Robustness Checks}
+\label{sec:robustness}
+% ============================================================
+
+\subsection{Alternative Specifications}
+
+Present alternative model specifications, subsamples, or placebo tests.
+
+\subsection{Addressing Endogeneity}
+
+Discuss additional tests addressing potential endogeneity.
+
+% ============================================================
+\section{Conclusion}
+\label{sec:conclusion}
+% ============================================================
+
+Summarize the main findings, discuss implications for theory and practice, acknowledge limitations, and suggest directions for future research.
+
+% --- References ---
+\newpage
+\bibliography{references}   % references.bib file
+
+% ============================================================
+% --- Appendix ---
+\newpage
+\begin{appendices}
+\section{Variable Definitions}
+\label{app:variables}
+
+\begin{table}[H]
+\centering
+\caption{Variable Definitions}
+\label{tab:vardef}
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+Variable & Definition \\
+\midrule
+Return        & Monthly stock return from CRSP. \\
+Market Cap    & Share price times shares outstanding, in billions of USD. \\
+Book-to-Market & Book value of equity divided by market value of equity. \\
+Leverage      & Total debt divided by total assets. \\
+ROA           & Net income divided by total assets. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Additional Results}
+\label{app:additional}
+
+Place supplementary tables and figures here.
+
+\end{appendices}
+
+\end{document}
+
